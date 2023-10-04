@@ -1,10 +1,10 @@
-
 import 'package:flutter/material.dart';
+
 import 'package:your_type_mbti/question_page.dart';
+import 'package:your_type_mbti/util/app_textstyle.dart';
 
 class HomePage extends StatelessWidget {
-const HomePage({super.key});
-
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,19 +15,14 @@ const HomePage({super.key});
           children: [
             Text(
               "유어타입",
-              style: TextStyle(
-                fontSize: 45,
-                fontWeight: FontWeight.bold,
-              ),
+              style: AppTextstyle.koPtBold45(),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   "MBTI",
-                  style: TextStyle(
-                    fontSize: 32,
-                  ),
+                  style: AppTextstyle.koPtRegular30(),
                 ),
                 SizedBox(
                   width: 5,
@@ -69,8 +64,7 @@ const HomePage({super.key});
                     child: Text(
                       "테스트 시작",
                       textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                      style: AppTextstyle.koPtSemiBold20(color: Colors.white),
                     ),
                   ),
                 ))
