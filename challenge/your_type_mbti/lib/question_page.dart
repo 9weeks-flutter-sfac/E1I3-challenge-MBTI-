@@ -57,7 +57,10 @@ class _QuestionPageState extends State<QuestionPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Text(),
+                    Text(Questions.mbtiQuestions[index]['num'], style: AppTextstyle.koPtBold36(),),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Center(child: Text('/${Questions.mbtiQuestions.length}', style: AppTextstyle.koPtBold20()))
                   ],
                 ),
