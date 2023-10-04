@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:your_type_mbti/util/app_color.dart';
 
 class AppElevatedButton extends StatefulWidget {
   const AppElevatedButton({super.key, this.onPressed, required this.options});
@@ -20,10 +21,10 @@ class _AppElevatedButtonState extends State<AppElevatedButton> {
         child: ElevatedButton(
          style: ElevatedButton.styleFrom(
           shape: const RoundedRectangleBorder(
-            side: BorderSide(color: Colors.black45),
+            side: BorderSide(color: AppColor.pinkRed, width: 2),
             borderRadius: BorderRadius.all(Radius.circular(10))),
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.blue,
+          backgroundColor: AppColor.white,
+          foregroundColor: AppColor.pinkRed,
           padding: EdgeInsets.all(32),
          ),
           onPressed: widget.onPressed,

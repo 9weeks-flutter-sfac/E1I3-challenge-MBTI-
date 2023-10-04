@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:your_type_mbti/questions.dart';
+import 'package:your_type_mbti/service/answer_service.dart';
+import 'package:your_type_mbti/util/app_textstyle.dart';
 import 'package:your_type_mbti/widget/app_elevated_button.dart';
 
 class QuestionPage extends StatefulWidget {
@@ -17,6 +19,8 @@ class _QuestionPageState extends State<QuestionPage> {
     return Questions.mbtiQuestions.length;
   }
 
+  AnswerService answerService = AnswerService();
+
   void nextPage() {
     if (currentPage < totalPage() - 1) {
       pageController.nextPage(
@@ -24,7 +28,7 @@ class _QuestionPageState extends State<QuestionPage> {
         curve: Curves.easeIn,
       );
       setState(() {
-        currentPage++; // Increment the current page index.
+        currentPage++;
       });
     }
   }
@@ -43,22 +47,38 @@ class _QuestionPageState extends State<QuestionPage> {
         itemCount: Questions.mbtiQuestions.length,
         controller: pageController,
         itemBuilder: (context, index) {
-          return Column(
-            children: [
-              Text(Questions.mbtiQuestions[index]['question']),
-              AppElevatedButton(
-                onPressed: () {
-                  nextPage();
-                },
-                options: Questions.mbtiQuestions[index]['options'][0]['a'],
-              ),
-              AppElevatedButton(
-                onPressed: () {
-                  nextPage();
-                },
-                options: Questions.mbtiQuestions[index]['options'][1]['b'],
-              ),
-            ],
+          return Padding(
+            padding: const EdgeInsets.only(top: 64),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Text(),
+                    Text('/${Questions.mbtiQuestions.length}', style: AppTextstyle.koPtBold20(),)
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(Questions.mbtiQuestions[index]['question'], style: AppTextstyle.koPtRegular20(),),
+                const SizedBox(
+                  height: 30,
+                ),
+                AppElevatedButton(
+                  onPressed: () {
+                    nextPage();
+                  },
+                  options: Questions.mbtiQuestions[index]['options'][0]['a'],
+                ),
+                AppElevatedButton(
+                  onPressed: () {
+                    nextPage();
+                  },
+                  options: Questions.mbtiQuestions[index]['options'][1]['b'],
+                ),
+              ],
+            ),
           );
         },
       ),

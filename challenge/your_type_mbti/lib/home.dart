@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:your_type_mbti/question_page.dart';
+import 'package:your_type_mbti/util/app_color.dart';
 import 'package:your_type_mbti/util/app_textstyle.dart';
 
 class HomePage extends StatelessWidget {
@@ -24,35 +25,36 @@ class HomePage extends StatelessWidget {
                   "MBTI",
                   style: AppTextstyle.koPtRegular30(),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
-                Icon(
+                const Icon(
                   Icons.favorite,
                   size: 30,
                   color: Color(0xFFF7797D),
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Image.asset(
               'assets/images/main.png',
               width: 320,
             ),
-            SizedBox(
+           const SizedBox(
               height: 40,
             ),
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => QuestionPage()));
+                      MaterialPageRoute(builder: (context) => const QuestionPage()));
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  primary: Color(0xFFF7797D),
-                  textStyle: TextStyle(color: Colors.white),
+                  backgroundColor: AppColor.pinkRed,
+                  // primary: Color(0xFFF7797D),
+                  textStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
                   ),
