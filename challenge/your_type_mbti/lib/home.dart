@@ -1,10 +1,11 @@
-
 import 'package:flutter/material.dart';
+
 import 'package:your_type_mbti/question_page.dart';
+import 'package:your_type_mbti/util/app_color.dart';
+import 'package:your_type_mbti/util/app_textstyle.dart';
 
 class HomePage extends StatelessWidget {
-const HomePage({super.key});
-
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,49 +16,45 @@ const HomePage({super.key});
           children: [
             Text(
               "유어타입",
-              style: TextStyle(
-                fontSize: 45,
-                fontWeight: FontWeight.bold,
-              ),
+              style: AppTextstyle.koPtBold45(),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   "MBTI",
-                  style: TextStyle(
-                    fontSize: 32,
-                  ),
+                  style: AppTextstyle.koPtRegular30(),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
-                Icon(
+                const Icon(
                   Icons.favorite,
                   size: 30,
                   color: Color(0xFFF7797D),
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Image.asset(
               'assets/images/main.png',
               width: 320,
             ),
-            SizedBox(
+           const SizedBox(
               height: 40,
             ),
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => QuestionPage()));
+                      MaterialPageRoute(builder: (context) => const QuestionPage()));
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  primary: Color(0xFFF7797D),
-                  textStyle: TextStyle(color: Colors.white),
+                  backgroundColor: AppColor.pinkRed,
+                  // primary: Color(0xFFF7797D),
+                  textStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
                   ),
@@ -69,8 +66,7 @@ const HomePage({super.key});
                     child: Text(
                       "테스트 시작",
                       textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                      style: AppTextstyle.koPtSemiBold20(color: Colors.white),
                     ),
                   ),
                 ))
