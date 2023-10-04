@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:your_type_mbti/util/app_color.dart';
 
 class AppTextstyle {
+  static TextStyle koPtBold45({Color color = AppColor.black}) =>
+      TextStyle(fontFamily: 'PretendardBold', fontSize: 45, color: color);
+
   static TextStyle koPtBold36({Color color = AppColor.black}) =>
       TextStyle(fontFamily: 'PretendardBold', fontSize: 36, color: color);
 
