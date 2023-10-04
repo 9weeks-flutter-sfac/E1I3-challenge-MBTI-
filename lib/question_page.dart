@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:your_type_mbti/questions.dart';
+import 'package:your_type_mbti/service/answer_service.dart';
 import 'package:your_type_mbti/widget/app_elevated_button.dart';
 
 class QuestionPage extends StatefulWidget {
@@ -17,6 +18,8 @@ class _QuestionPageState extends State<QuestionPage> {
     return Questions.mbtiQuestions.length;
   }
 
+  AnswerService answerService = AnswerService();
+
   void nextPage() {
     if (currentPage < totalPage() - 1) {
       pageController.nextPage(
@@ -24,7 +27,7 @@ class _QuestionPageState extends State<QuestionPage> {
         curve: Curves.easeIn,
       );
       setState(() {
-        currentPage++; // Increment the current page index.
+        currentPage++;
       });
     }
   }
@@ -65,3 +68,4 @@ class _QuestionPageState extends State<QuestionPage> {
     );
   }
 }
+
