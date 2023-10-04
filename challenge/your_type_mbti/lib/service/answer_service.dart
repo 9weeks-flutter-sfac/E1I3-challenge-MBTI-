@@ -1,8 +1,7 @@
 class AnswerService {
   int questionNum = 0; // 매개변수로 받기
   int typeNum = 0;
-  int a = 0; // 매개변수로 받기
-  int b = 0; // 매개변수로 받기
+
   String resultTypeN = "";
   String resultType = "";
   String selectAnswer = "";
@@ -22,8 +21,8 @@ class AnswerService {
     [0, 0],
   ];
 
-  void plusScore() {
-    var typeNum = getType(questionNum);
+  void plusScore(String selectAnswer) {
+    typeNum = getType(questionNum);
 
     if (selectAnswer == "a") {
       typeScoreList[typeNum][0]++;
@@ -53,6 +52,9 @@ class AnswerService {
   // 사용자의 선택을 토대로 어떤 타입 값인지 산출
   void getTypeValue(int a, int b, String resultTypeN, List<List<String>> type,
       int typeNum, String resultType) {
+    int a = typeScoreList[typeNum][0];
+    int b = typeScoreList[typeNum][1];
+
     if (a > b) {
       resultTypeN = type[typeNum][1];
     } else if (b > a) {
