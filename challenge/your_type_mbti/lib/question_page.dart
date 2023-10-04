@@ -41,21 +41,24 @@ class _QuestionPageState extends State<QuestionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       title: Text('Question ${currentPage + 1} / ${totalPage()}'),
       ),      
-      body: PageView.builder(
-        itemCount: Questions.mbtiQuestions.length,
-        controller: pageController,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(top: 64),
-            child: Column(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: PageView.builder(
+          itemCount: Questions.mbtiQuestions.length,
+          controller: pageController,
+          itemBuilder: (context, index) {
+            return Column(
               children: [
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Text(),
-                    Text('/${Questions.mbtiQuestions.length}', style: AppTextstyle.koPtBold20(),)
+                    Center(child: Text('/${Questions.mbtiQuestions.length}', style: AppTextstyle.koPtBold20()))
                   ],
                 ),
                 const SizedBox(
@@ -78,9 +81,9 @@ class _QuestionPageState extends State<QuestionPage> {
                   options: Questions.mbtiQuestions[index]['options'][1]['b'],
                 ),
               ],
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
