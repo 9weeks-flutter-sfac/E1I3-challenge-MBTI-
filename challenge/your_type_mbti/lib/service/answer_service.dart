@@ -50,8 +50,8 @@ class AnswerService {
   }
 
   // 사용자의 선택을 토대로 어떤 타입 값인지 산출
-  void getTypeValue(int a, int b, String resultTypeN, List<List<String>> type,
-      int typeNum, String resultType) {
+  void getTypeValue(String resultTypeN, List<List<String>> type, int typeNum,
+      String resultType) {
     int a = typeScoreList[typeNum][0];
     int b = typeScoreList[typeNum][1];
 
