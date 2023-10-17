@@ -1,0 +1,4 @@
+#Tue Oct 17 16:34:05 KST 2023
+base.0=C\:\\Users\\yunhy\\OneDrive\\Desktop\\Dev\\flutter\\study\\team-E1I3\\challenge\\your_type_mbti\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
