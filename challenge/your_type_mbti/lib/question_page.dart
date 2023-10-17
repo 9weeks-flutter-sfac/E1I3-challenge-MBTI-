@@ -43,8 +43,8 @@ class _QuestionPageState extends State<QuestionPage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-      title: Text('Question ${currentPage + 1} / ${totalPage()}'),
-      ),      
+        title: Text('Question ${currentPage + 1} / ${totalPage()}'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: PageView.builder(
@@ -57,28 +57,40 @@ class _QuestionPageState extends State<QuestionPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(Questions.mbtiQuestions[index]['num'], style: AppTextstyle.koPtBold36(),),
+                    Text(
+                      Questions.mbtiQuestions[index]['num'],
+                      style: AppTextstyle.koPtBold36(),
+                    ),
                     SizedBox(
                       width: 5,
                     ),
-                    Center(child: Text('/${Questions.mbtiQuestions.length}', style: AppTextstyle.koPtBold20()))
+                    Center(
+                        child: Text('/${Questions.mbtiQuestions.length}',
+                            style: AppTextstyle.koPtBold20()))
                   ],
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                Text(Questions.mbtiQuestions[index]['question'], style: AppTextstyle.koPtRegular20(),),
+                Text(
+                  Questions.mbtiQuestions[index]['question'],
+                  style: AppTextstyle.koPtRegular20(),
+                ),
                 const SizedBox(
                   height: 30,
                 ),
                 AppElevatedButton(
                   onPressed: () {
+                    answerService.plusScore("a", index + 1);
+                    print(answerService.typeScoreList);
                     nextPage();
                   },
                   options: Questions.mbtiQuestions[index]['options'][0]['a'],
                 ),
                 AppElevatedButton(
                   onPressed: () {
+                    answerService.plusScore("b", index + 1);
+                    print(answerService.typeScoreList);
                     nextPage();
                   },
                   options: Questions.mbtiQuestions[index]['options'][1]['b'],
