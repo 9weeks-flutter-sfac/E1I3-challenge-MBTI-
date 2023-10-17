@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:your_type_mbti/questions.dart';
+import 'package:your_type_mbti/service/questions.dart';
+import 'package:your_type_mbti/results_page.dart';
 import 'package:your_type_mbti/service/answer_service.dart';
 import 'package:your_type_mbti/util/app_textstyle.dart';
 import 'package:your_type_mbti/widget/app_elevated_button.dart';
@@ -21,17 +22,23 @@ class _QuestionPageState extends State<QuestionPage> {
 
   AnswerService answerService = AnswerService();
 
-  void nextPage() {
-    if (currentPage < totalPage() - 1) {
-      pageController.nextPage(
-        duration: Duration(milliseconds: 200),
-        curve: Curves.easeIn,
-      );
-      setState(() {
-        currentPage++;
-      });
-    }
+void nextPage() {
+  if (currentPage < totalPage() - 1) {
+    pageController.nextPage(
+      duration: Duration(milliseconds: 200),
+      curve: Curves.easeIn,
+    );
+    setState(() {
+      currentPage++;
+    });
+  } else {
+    // 현재 페이지가 마지막 페이지일 때 결과 페이지로 이동
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ResultPage()), // ResultPage는 결과 페이지의 이름으로 변경해야 함
+    );
   }
+}
 
 // void pageNumber(){
 //   Questions.mbtiQuestions[index]['number'];
