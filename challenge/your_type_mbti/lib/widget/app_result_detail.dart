@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:your_type_mbti/util/app_color.dart';
 import 'package:your_type_mbti/util/app_textstyle.dart';
+import 'package:your_type_mbti/widget/app_elevated_button.dart';
 
 class AppResultDetail extends StatelessWidget {
   const AppResultDetail(
@@ -17,15 +18,20 @@ class AppResultDetail extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         showModalBottomSheet(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30),
+              topRight: Radius.circular(30),
+            )),
             context: context,
             builder: (BuildContext context) {
-              return SizedBox(
-                // decoration: const BoxDecoration(
-                //   color: Colors.white,
-                //     borderRadius: BorderRadius.only(
-                //   topLeft: Radius.circular(30),
-                //   topRight: Radius.circular(30),
-                // )),
+              return Container(
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    )),
                 height: MediaQuery.of(context).size.height,
                 child: Center(
                   child: SingleChildScrollView(
@@ -41,7 +47,9 @@ class AppResultDetail extends StatelessWidget {
                               Text(
                                 description,
                                 style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold, color: AppColor.pinkRed),
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColor.pinkRed),
                               ),
                               const SizedBox(
                                 height: 10,
@@ -70,9 +78,39 @@ class AppResultDetail extends StatelessWidget {
                           ),
                         ),
                         ElevatedButton(
-                          child: const Text('닫기'),
-                          onPressed: () => Navigator.pop(context),
-                        )
+                            onPressed: () => Navigator.pop(context),
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              backgroundColor: AppColor.pinkRed,
+                              // primary: Color(0xFFF7797D),
+                              textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                            ),
+                            child: Container(
+                              width: 180,
+                              height: 54,
+                              child: Center(
+                                child: Text(
+                                  "닫기",
+                                  textAlign: TextAlign.center,
+                                  style: AppTextstyle.koPtSemiBold20(
+                                      color: Colors.white),
+                                ),
+                              ),
+                            )),
+                        const SizedBox(
+                          height: 20,
+                        ),
+
+                        // AppElevatedButton(options: '닫기')
+                        // ElevatedButton(
+                        //   child: const Text('닫기'),
+                        //   onPressed: () => Navigator.pop(context),
+                        // )
                       ],
                     ),
                   ),

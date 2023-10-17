@@ -33,7 +33,7 @@ class _ResultPageState extends State<ResultPage> {
   Widget build(BuildContext context) {
     int index = findMbti();
     print("INDEX = $index");
-    print(Results.mbtiResults[index]['description']);
+    print(Results.mbtiResults[index]["description"]);
 
     String description = Results.mbtiResults[index]["description"];
     List<String> weaknesses = Results.mbtiResults[index]["weaknesses"];
