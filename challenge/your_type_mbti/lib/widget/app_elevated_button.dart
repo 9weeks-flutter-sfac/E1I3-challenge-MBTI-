@@ -19,7 +19,7 @@ class _AppElevatedButtonState extends State<AppElevatedButton> {
       padding: const EdgeInsets.all(16.0),
       child: SizedBox(
         height: MediaQuery.of(context).size.height / 9.2,
-        width: MediaQuery.of(context).size.width / 1.5,
+        width: MediaQuery.of(context).size.width / 1.4,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             shape: const RoundedRectangleBorder(
@@ -27,7 +27,7 @@ class _AppElevatedButtonState extends State<AppElevatedButton> {
               borderRadius: BorderRadius.all(Radius.circular(10))),
             backgroundColor: widget.isSelected ? AppColor.pinkRed : AppColor.white,
             foregroundColor: widget.isSelected ? AppColor.white : AppColor.black,
-            padding: EdgeInsets.all(32),
+            padding: EdgeInsets.all(24),
           ),
           onPressed: widget.onPressed,
           child: Text(widget.options,style: AppTextstyle.koPtSemiBold15(),),
