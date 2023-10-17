@@ -24,9 +24,6 @@ class AnswerService {
 
   String secondResult = "";
 
-  // 동점나올경우 두개의 결과를 담기 위해 결과를 리스트에 담기
-  // List<String> resultList = [];
-
   void plusScore(String selectAnswer, int questionNum) {
     // 어떤 타입 문항인지 찾기
     typeNum = getQuestionType(questionNum);
@@ -73,7 +70,11 @@ class AnswerService {
   }
 
   // 사용자의 최종 결과 타입
-  String getResult(String result) {
+  String getResult(List<List<int>> typeScoreList) {
+    if (result.length != 0) {
+      result = "";
+    }
+
     for (int i = 0; i < typeScoreList.length; i++) {
       int scoreA = typeScoreList[i][0];
       int scoreB = typeScoreList[i][1];

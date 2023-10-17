@@ -1,10 +1,11 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:your_type_mbti/home.dart';
 import 'package:your_type_mbti/results.dart';
+import 'package:your_type_mbti/service/answer_service.dart';
+import 'package:your_type_mbti/service/result.dart';
 import 'package:your_type_mbti/util/app_color.dart';
 import 'package:your_type_mbti/util/app_textstyle.dart';
+import 'package:your_type_mbti/widget/app_result_detail.dart';
 
 class ResultPage extends StatefulWidget {
   const ResultPage({super.key});
@@ -14,11 +15,31 @@ class ResultPage extends StatefulWidget {
 }
 
 class _ResultPageState extends State<ResultPage> {
-  int currentIndex = 0;
-  // var data = Results.mbtiResults;
+  AnswerService answerService = AnswerService();
+  int findMbti() {
+    var typeScoreList = answerService.typeScoreList;
+    var result = answerService.getResult(typeScoreList);
+    print("RESULT = $result");
+    int idx = 0;
+    for (int i = 0; i < Results.mbtiResults.length; i++) {
+      if (Results.mbtiResults[i]["type"] == result) {
+        idx = i;
+      }
+    }
+    return idx;
+  }
 
   @override
   Widget build(BuildContext context) {
+    int index = findMbti();
+    print("INDEX = $index");
+    print(Results.mbtiResults[index]['description']);
+
+    String description = Results.mbtiResults[index]["description"];
+    List<String> weaknesses = Results.mbtiResults[index]["weaknesses"];
+    List<String> characteristics =
+        Results.mbtiResults[index]["characteristics"];
+
     return Scaffold(
         body: SafeArea(
       child: Center(
@@ -28,7 +49,7 @@ class _ResultPageState extends State<ResultPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              Results.mbtiResults[currentIndex]?["type"] ?? "MBTI",
+              Results.mbtiResults[index]["type"] ?? "MBTI",
               textAlign: TextAlign.center,
               style: AppTextstyle.koPtBold45(),
             ),
@@ -36,8 +57,7 @@ class _ResultPageState extends State<ResultPage> {
               height: 20,
             ),
             Image.asset(
-              Results.mbtiResults[currentIndex]?["img"] ??
-                  'assets/images/ENTP.png',
+              Results.mbtiResults[index]?["img"] ?? 'assets/images/ENTP.png',
               width: 250,
             ),
             Padding(
@@ -45,9 +65,9 @@ class _ResultPageState extends State<ResultPage> {
               child: ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: Results.mbtiResults[currentIndex]["desc"].length,
+                  itemCount: Results.mbtiResults[index]["desc"].length,
                   itemBuilder: (context, index) {
-                    var desc = Results.mbtiResults[currentIndex]["desc"][index];
+                    var desc = Results.mbtiResults[index]["desc"][index];
                     return ListTile(
                         subtitle: Column(
                       children: [
@@ -59,54 +79,18 @@ class _ResultPageState extends State<ResultPage> {
                     ));
                   }),
             ),
-            ElevatedButton(
-                onPressed: () {
-                  showModalBottomSheet(context: context, builder: (BuildContext context){
-                    return Container(
-                      height: 200,
-                color: Colors.amber,
-                child: Center(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Text('Modal BottomSheet'),
-                        ElevatedButton(
-                          child: const Text('닫기'),
-                          onPressed: () => Navigator.pop(context),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                    );
-                  });
-                },
-                style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: AppColor.pinkRed,
-                  // primary: Color(0xFFF7797D),
-                  textStyle: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                ),
-                child: Container(
-                  width: 180,
-                  height: 54,
-                  child: Center(
-                    child: Text(
-                      "자세히 보기",
-                      textAlign: TextAlign.center,
-                      style: AppTextstyle.koPtSemiBold20(color: Colors.white),
-                    ),
-                  ),
-                )),
-                const SizedBox(
-                  height: 10,
-                ),
+            AppResultDetail(
+              description: description,
+              weaknesses: weaknesses
+                  .map((characteristic) => '• $characteristic')
+                  .join('\n\n'),
+              characteristics: characteristics
+                  .map((characteristic) => '• $characteristic')
+                  .join('\n\n'),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(
