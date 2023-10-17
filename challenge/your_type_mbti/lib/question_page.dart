@@ -61,11 +61,11 @@ class _QuestionPageState extends State<QuestionPage> {
                       Questions.mbtiQuestions[index]['num'],
                       style: AppTextstyle.koPtBold36(),
                     ),
-                    SizedBox(
-                      width: 5,
-                    ),
+                    // SizedBox(
+                    //   width: 5,
+                    // ),
                     Center(
-                        child: Text('/${Questions.mbtiQuestions.length}',
+                        child: Text('  / ${Questions.mbtiQuestions.length}',
                             style: AppTextstyle.koPtBold20()))
                   ],
                 ),
