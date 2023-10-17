@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:your_type_mbti/questions.dart';
+import 'package:your_type_mbti/service/questions.dart';
+import 'package:your_type_mbti/results_page.dart';
+import 'package:your_type_mbti/service/answer_service.dart';
+import 'package:your_type_mbti/util/app_textstyle.dart';
 import 'package:your_type_mbti/widget/app_elevated_button.dart';
 
 class QuestionPage extends StatefulWidget {
@@ -17,17 +20,25 @@ class _QuestionPageState extends State<QuestionPage> {
     return Questions.mbtiQuestions.length;
   }
 
-  void nextPage() {
-    if (currentPage < totalPage() - 1) {
-      pageController.nextPage(
-        duration: Duration(milliseconds: 200),
-        curve: Curves.easeIn,
-      );
-      setState(() {
-        currentPage++; // Increment the current page index.
-      });
-    }
+  AnswerService answerService = AnswerService();
+
+void nextPage() {
+  if (currentPage < totalPage() - 1) {
+    pageController.nextPage(
+      duration: Duration(milliseconds: 200),
+      curve: Curves.easeIn,
+    );
+    setState(() {
+      currentPage++;
+    });
+  } else {
+    // 현재 페이지가 마지막 페이지일 때 결과 페이지로 이동
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ResultPage()), // ResultPage는 결과 페이지의 이름으로 변경해야 함
+    );
   }
+}
 
 // void pageNumber(){
 //   Questions.mbtiQuestions[index]['number'];
@@ -37,30 +48,64 @@ class _QuestionPageState extends State<QuestionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      title: Text('Question ${currentPage + 1} / ${totalPage()}'),
-      ),      
-      body: PageView.builder(
-        itemCount: Questions.mbtiQuestions.length,
-        controller: pageController,
-        itemBuilder: (context, index) {
-          return Column(
-            children: [
-              Text(Questions.mbtiQuestions[index]['question']),
-              AppElevatedButton(
-                onPressed: () {
-                  nextPage();
-                },
-                options: Questions.mbtiQuestions[index]['options'][0]['a'],
-              ),
-              AppElevatedButton(
-                onPressed: () {
-                  nextPage();
-                },
-                options: Questions.mbtiQuestions[index]['options'][1]['b'],
-              ),
-            ],
-          );
-        },
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Text('Question ${currentPage + 1} / ${totalPage()}'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: PageView.builder(
+          itemCount: Questions.mbtiQuestions.length,
+          controller: pageController,
+          itemBuilder: (context, index) {
+            return Column(
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      Questions.mbtiQuestions[index]['num'],
+                      style: AppTextstyle.koPtBold36(),
+                    ),
+                    // SizedBox(
+                    //   width: 5,
+                    // ),
+                    Center(
+                        child: Text('  / ${Questions.mbtiQuestions.length}',
+                            style: AppTextstyle.koPtBold20()))
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  Questions.mbtiQuestions[index]['question'],
+                  style: AppTextstyle.koPtRegular20(),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                AppElevatedButton(
+                  onPressed: () {
+                    answerService.plusScore("a", index + 1);
+                    print(answerService.typeScoreList);
+                    nextPage();
+                  },
+                  options: Questions.mbtiQuestions[index]['options'][0]['a'],
+                ),
+                AppElevatedButton(
+                  onPressed: () {
+                    answerService.plusScore("b", index + 1);
+                    print(answerService.typeScoreList);
+                    nextPage();
+                  },
+                  options: Questions.mbtiQuestions[index]['options'][1]['b'],
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

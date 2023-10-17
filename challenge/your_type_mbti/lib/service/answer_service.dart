@@ -16,18 +16,31 @@ class AnswerService {
 
   // 각 리스트의 인덱스 0과 1은 각 타입의 a와 b의 점수
   var typeScoreList = [
+<<<<<<< HEAD
     [0, 0],
     [0, 0],
     [0, 0],
     [0, 0],
+=======
+    [0, 0], // E-I
+    [0, 0], // S-N
+    [0, 0], // T-F
+    [0, 0], // J-P
+>>>>>>> cc23e3e4d20f7bec3000d78c7ac0e585ec087beb
   ];
 
   String secondResult = "";
 
   // 동점나올경우 두개의 결과를 담기 위해 결과를 리스트에 담기
+<<<<<<< HEAD
   List<String> resultList = [];
 
   void plusScore(String selectAnswer) {
+=======
+  // List<String> resultList = [];
+
+  void plusScore(String selectAnswer, int questionNum) {
+>>>>>>> cc23e3e4d20f7bec3000d78c7ac0e585ec087beb
     // 어떤 타입 문항인지 찾기
     typeNum = getQuestionType(questionNum);
 
@@ -41,6 +54,7 @@ class AnswerService {
 
   // 어떤 타입을 가르는 문항인지 확인
   int getQuestionType(int questionNum) {
+<<<<<<< HEAD
     if (questionNum % 7 == 1) {
       typeNum = 1;
     }
@@ -53,6 +67,36 @@ class AnswerService {
     if (questionNum % 7 == 6 || questionNum % 7 == 7) {
       typeNum = 4;
     }
+=======
+    if (questionNum <= 7) {
+      if (questionNum == 1) {
+        typeNum = 0;
+      }
+      if (questionNum == 2 || questionNum == 3) {
+        typeNum = 1;
+      }
+      if (questionNum == 4 || questionNum == 5) {
+        typeNum = 2;
+      }
+      if (questionNum == 6 || questionNum == 6) {
+        typeNum = 3;
+      }
+    } else {
+      if (questionNum % 7 == 1) {
+        typeNum = 0;
+      }
+      if (questionNum % 7 == 2 || questionNum % 7 == 3) {
+        typeNum = 1;
+      }
+      if (questionNum % 7 == 4 || questionNum % 7 == 5) {
+        typeNum = 2;
+      }
+      if (questionNum % 7 == 6 || questionNum % 7 == 0) {
+        typeNum = 3;
+      }
+    }
+
+>>>>>>> cc23e3e4d20f7bec3000d78c7ac0e585ec087beb
     return typeNum;
   }
 
