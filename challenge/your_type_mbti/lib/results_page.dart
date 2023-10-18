@@ -1,44 +1,84 @@
+// ignore_for_file: avoid_print
+
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:your_type_mbti/home.dart';
 import 'package:your_type_mbti/results.dart';
-import 'package:your_type_mbti/service/answer_service.dart';
-import 'package:your_type_mbti/service/result.dart';
 import 'package:your_type_mbti/util/app_color.dart';
 import 'package:your_type_mbti/util/app_textstyle.dart';
 import 'package:your_type_mbti/widget/app_result_detail.dart';
 
 class ResultPage extends StatefulWidget {
-  const ResultPage({super.key});
+  ResultPage({super.key, required this.typeScoreList});
+
+  List<List<int>> typeScoreList;
 
   @override
   State<ResultPage> createState() => _ResultPageState();
 }
 
 class _ResultPageState extends State<ResultPage> {
-  AnswerService answerService = AnswerService();
-  int findMbti() {
-    var typeScoreList = answerService.typeScoreList;
-    var result = answerService.getResult(typeScoreList);
+  String result = "";
+
+  List<List<String>> type = [
+    ["E", "I"],
+    ["S", "N"],
+    ["T", "F"],
+    ["J", "P"]
+  ];
+
+  int findMbti(List<List<int>> typeScoreList) {
+    print("findmbti.typescorelist : $typeScoreList");
+    var result = getResult(typeScoreList);
     print("RESULT = $result");
     int idx = 0;
     for (int i = 0; i < Results.mbtiResults.length; i++) {
       if (Results.mbtiResults[i]["type"] == result) {
+        print("findMbti.type = ${Results.mbtiResults[i]["type"]}");
         idx = i;
+        break;
       }
     }
+    print("findmbti.idx = $idx");
     return idx;
+  }
+
+  // 사용자의 최종 결과 타입
+  String getResult(List<List<int>> typeScoreList) {
+    if (result.length != 0) {
+      result = "";
+    }
+
+    for (int i = 0; i < typeScoreList.length; i++) {
+      int scoreA = typeScoreList[i][0];
+      int scoreB = typeScoreList[i][1];
+
+      if (scoreA > scoreB) {
+        result += type[i][0];
+      }
+      if (scoreA < scoreB) {
+        result += type[i][1];
+      }
+      if (scoreA == scoreB) {
+        int idx = Random().nextInt(2);
+        result += type[i][idx];
+      }
+    }
+
+    return result;
   }
 
   @override
   Widget build(BuildContext context) {
-    int index = findMbti();
-    print("INDEX = $index");
-    print("description = ${Results.mbtiResults[index]['description']}");
+    int typeIdx = findMbti(widget.typeScoreList);
+    print("typeIdx = $typeIdx");
+    print("description = ${Results.mbtiResults[typeIdx]['description']}");
 
-    String description = Results.mbtiResults[index]["description"];
-    List<String> weaknesses = Results.mbtiResults[index]["weaknesses"];
+    String description = Results.mbtiResults[typeIdx]["description"];
+    List<String> weaknesses = Results.mbtiResults[typeIdx]["weaknesses"];
     List<String> characteristics =
-        Results.mbtiResults[index]["characteristics"];
+        Results.mbtiResults[typeIdx]["characteristics"];
 
     return Scaffold(
         body: SafeArea(
@@ -49,7 +89,7 @@ class _ResultPageState extends State<ResultPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              Results.mbtiResults[index]["type"] ?? "MBTI",
+              Results.mbtiResults[typeIdx]["type"] ?? "MBTI",
               textAlign: TextAlign.center,
               style: AppTextstyle.koPtBold45(),
             ),
@@ -57,27 +97,33 @@ class _ResultPageState extends State<ResultPage> {
               height: 20,
             ),
             Image.asset(
-              Results.mbtiResults[index]?["img"] ?? 'assets/images/ENTP.png',
+              Results.mbtiResults[typeIdx]["img"] ?? 'assets/images/ENTP.png',
               width: 250,
             ),
             Padding(
               padding: const EdgeInsets.all(40.0),
               child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: Results.mbtiResults[index]["desc"].length,
-                  itemBuilder: (context, index) {
-                    var desc = Results.mbtiResults[index]["desc"][index];
-                    return ListTile(
-                        subtitle: Column(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: Results.mbtiResults[typeIdx]["desc"].length,
+                itemBuilder: (context, index) {
+                  print("======== typeIdx = $typeIdx");
+                  print("==== index = $index");
+                  Map<String, dynamic> desc =
+                      Results.mbtiResults[index]["desc"][0];
+                  print(desc["desc1"]);
+                  return ListTile(
+                    subtitle: Column(
                       children: [
                         _buildBulletText(desc["desc1"]),
                         _buildBulletText(desc["desc2"]),
                         _buildBulletText(desc["desc3"]),
                         _buildBulletText(desc["desc4"]),
                       ],
-                    ));
-                  }),
+                    ),
+                  );
+                },
+              ),
             ),
             AppResultDetail(
               description: description,

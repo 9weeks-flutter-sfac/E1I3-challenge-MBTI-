@@ -3,6 +3,7 @@ class Results {
     {
       "type": "ENFJ",
       "img": "assets/images/ENFJ.png",
+      "description": "ENFJ 유형은 ...",
       "desc": [
         {
           "desc1": "인류애가 많다.",
@@ -11,7 +12,6 @@ class Results {
           "desc4": "경쟁적인 환경에서는 일하기 힘들어한다.",
         }
       ],
-      'description': "ENFJ 유형은 ...",
       'characteristics': [
         "사회적 리더십: ENFJ는 사회적 상황에서 리더 역할을 맡는 데 탁월합니다. 다른 사람들을 이끄고 조직하는 데 능숙하며, 그들의 리더십은 동료들에게 영향을 미칩니다.",
         "친화력: ENFJ는 사람을 좋아하며 다른 사람과 가까운 관계를 형성하는 데 적극적입니다. 다른 사람들과의 관계를 중요시하며 친절하고 환영받는 분위기를 조성합니다.",
@@ -47,7 +47,7 @@ class Results {
           "desc4": "재밌게 놀다가도 불현듯 자아성찰을 많이 한다.",
         }
       ],
-      'description': "ENFP 유형은 ...",
+      "description": "ENFP 유형은 ...",
       'characteristics': [
         "열정적: ENFP는 열정적이며 새로운 아이디어와 프로젝트에 흥미를 가지고, 다른 사람들을 열광적으로 도와줍니다.",
         "창의성: ENFP는 독창적이며, 새로운 관점과 아이디어를 제시하며, 예술과 창작적 활동을 즐깁니다.",
@@ -74,7 +74,7 @@ class Results {
           "desc4": "감정 표현이 솔직하다.",
         }
       ],
-      'description': "ENTJ 유형은 ...",
+      "description": "ENTJ 유형은 ...",
       'characteristics': [
         "리더십: ENTJ는 리더로서 뛰어나며, 타인을 이끄고 조직하는 데 능숙합니다. 목표를 달성하기 위해 대담하게 행동합니다.",
         "논리적 사고: ENTJ는 객관적이며 논리적으로 문제를 해결하는 데 능숙하며, 전략을 세우는 데 뛰어납니다.",
@@ -101,7 +101,7 @@ class Results {
           "desc4": "억압당하는 것을 견디지 못한다.",
         }
       ],
-      'description': "ENTP 유형은 ...",
+      "description": "ENTP 유형은 ...",
       'characteristics': [
         "논리적 사고: ENTP는 논리적으로 문제를 해결하고, 다양한 시나리오와 가능성을 고려하는 데 능숙합니다.",
         "창의성: ENTP는 독창적이며, 새로운 아이디어와 방법을 개발하며, 빠르게 변화하는 환경에서 능동적입니다.",
@@ -128,7 +128,7 @@ class Results {
           "desc4": "역지사지를 잘한다.",
         }
       ],
-      'description': "ESFJ 유형은 ...",
+      "description": "ESFJ 유형은 ...",
       'characteristics': [
         "사회적: ESFJ는 사교적이고 다른 사람들과 어울리는 것을 즐깁니다. 사람들과의 관계를 중요시하며, 다른 사람들을 돕는 데 탁월합니다.",
         "책임감: ESFJ는 자신의 의무와 책임을 신중하게 다하며, 신뢰성 있는 동료와 친구로 알려져 있습니다.",
@@ -155,7 +155,7 @@ class Results {
           "desc4": "좋아하는 사람과 싫어하는 사람이 분명하다.",
         }
       ],
-      'description': "ESFP 유형은 ...",
+      "description": "ESFP 유형은 ...",
       'characteristics': [
         "사교적: ESFP는 다른 사람과 어울리는 것을 즐기며, 사회적 상황에서 능숙하게 대화하고 인간관계를 형성합니다.",
         "현실 감각: ESFP는 현재 상황을 중요시하며, 순간을 즐기고 경험 중심으로 삶을 살아갑니다.",
@@ -182,7 +182,7 @@ class Results {
           "desc4": "외향형 치고는 상당히 독립적이다.",
         }
       ],
-      'description': "ESTJ 유형은 ...",
+      "description": "ESTJ 유형은 ...",
       'characteristics': [
         "조직력: ESTJ는 잘 구조화된 환경을 선호하며, 계획적이고 조직적으로 일을 처리하는 데 능숙합니다.",
         "책임감: ESTJ는 자신의 의무와 책임을 중요시하며, 다른 사람들에게도 책임감을 고양시킵니다.",
@@ -209,7 +209,7 @@ class Results {
           "desc4": "잡생각을 잘 하지 않는다.",
         }
       ],
-      'description': "ESTP 유형은 ...",
+      "description": "ESTP 유형은 ...",
       'characteristics': [
         "모험적: ESTP는 새로운 경험과 모험을 즐기며, 적극적으로 활동하고 위험을 감수합니다.",
         "실용적: ESTP는 문제를 해결하는 데 실용적인 방법을 취하며, 현실적이고 객관적으로 생각합니다.",
@@ -236,7 +236,7 @@ class Results {
           "desc4": "과거와 현재의 공통점을 찾아 미래를 예측하는 것을 좋아한다.",
         }
       ],
-      'description': "INFJ 유형은 ...",
+      "description": "INFJ 유형은 ...",
       'characteristics': [
         "비전과 이상주의자: INFJ는 비전을 가지고 미래를 상상하며, 자신과 타인의 성장과 발전을 중요하게 생각합니다.",
         "정신적 탐구: INFJ는 심오하고 내면적인 생각을 즐기며, 자기 인식을 중요시합니다.",
@@ -263,7 +263,7 @@ class Results {
           "desc4": "조화롭게 살고자 하며 분쟁을 피하기 위해 노력한다.",
         }
       ],
-      'description': "INFP 유형은 ...",
+      "description": "INFP 유형은 ...",
       'characteristics': [
         "이상주의자: INFP는 이상적인 세계관을 가지며, 자신의 가치와 신념을 중요하게 여깁니다.",
         "창의성: INFP는 창의적이고 예술적이며, 자신의 감정과 아이디어를 예술 작품으로 표현하는 데 재능을 가집니다.",
@@ -290,7 +290,7 @@ class Results {
           "desc4": "모든 것을 혼자 하려는 의지가 강하다.",
         }
       ],
-      'description': "INTJ 유형은 ...",
+      "description": "INTJ 유형은 ...",
       'characteristics': [
         "논리적 사고: INTJ는 논리적으로 문제를 해결하고 전략을 세우는 데 능숙합니다.",
         "독립성: INTJ는 자주 혼자 일하고 자신만의 공간을 중요시합니다.",
@@ -317,7 +317,7 @@ class Results {
           "desc4": "꼭 필요한 것이 아니면 바로 잊어버린다.",
         }
       ],
-      'description': "INTP 유형은 ...",
+      "description": "INTP 유형은 ...",
       'characteristics': [
         "분석적 사고: INTP는 문제를 분석하고 논리적으로 해결하는 것을 좋아합니다. 이론과 개념을 탐구하는 데 열정적입니다.",
         "창의성: INTP는 독창적이며, 새로운 아이디어와 방법을 개발하는 데 능숙합니다.",
@@ -344,7 +344,7 @@ class Results {
           "desc4": "착하다는 얘기를 자주 듣는데 자기는 착한지 모른다.",
         }
       ],
-      'description': "ISFJ 유형은 ...",
+      "description": "ISFJ 유형은 ...",
       'characteristics': [
         "성실함: ISFJ는 매우 성실하고 책임감이 강하며, 자신의 의무와 약속을 엄격하게 지킵니다.",
         "현실적: ISFJ는 현실적으로 문제를 접근하고, 구체적으로 계획을 세우며 실행합니다.",
@@ -371,7 +371,7 @@ class Results {
           "desc4": "유연한 사고 방식과 개방적인 태도를 지니고 있다.",
         }
       ],
-      'description': "ISFP 유형은 ...",
+      "description": "ISFP 유형은 ...",
       'characteristics': [
         "예술적 감각: ISFP는 예술과 창의성에 관심이 많으며, 자신의 감정과 아이디어를 예술적으로 표현합니다.",
         "자유로운 영혼: ISFP는 독립적이며 자유로운 환경에서 가장 효과적으로 창조적이고 활동적입니다.",
@@ -398,7 +398,7 @@ class Results {
           "desc4": "사기 안 당할 것 같은 mbti 1순위.",
         }
       ],
-      'description': "ISTJ 유형은 ...",
+      "description": "ISTJ 유형은 ...",
       'characteristics': [
         "책임감: ISTJ는 자신의 의무와 책임을 엄격하게 준수하며, 다른 사람들에게 신뢰를 받습니다.",
         "조직력: ISTJ는 계획을 세우고 구체적으로 실행하는 데 능숙하며, 일의 세부사항을 잘 다룹니다.",
@@ -425,7 +425,7 @@ class Results {
           "desc4": "관심분야가 아니면 쳐다보지도 않는다.",
         }
       ],
-      'description': "ISTP 유형은 ...",
+      "description": "ISTP 유형은 ...",
       'characteristics': [
         "손재주가 뛰어남: ISTP는 다양한 기술과 손재주에 능통하며, 수리 능력이 뛰어나는 편입니다.",
         "참여형: ISTP는 행동 지향적이며, 문제 상황에 직접 참여하고 솔루션을 찾는 것을 선호합니다.",
