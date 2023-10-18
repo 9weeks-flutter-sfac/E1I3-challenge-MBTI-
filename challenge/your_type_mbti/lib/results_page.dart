@@ -29,13 +29,13 @@ class _ResultPageState extends State<ResultPage> {
   ];
 
   int findMbti(List<List<int>> typeScoreList) {
-    print("findmbti.typescorelist : $typeScoreList");
+    // print("findmbti.typescorelist : $typeScoreList");
     var result = getResult(typeScoreList);
     print("RESULT = $result");
     int idx = 0;
     for (int i = 0; i < Results.mbtiResults.length; i++) {
       if (Results.mbtiResults[i]["type"] == result) {
-        print("findMbti.type = ${Results.mbtiResults[i]["type"]}");
+        // print("findMbti.type = ${Results.mbtiResults[i]["type"]}");
         idx = i;
         break;
       }
@@ -80,6 +80,8 @@ class _ResultPageState extends State<ResultPage> {
     List<String> characteristics =
         Results.mbtiResults[typeIdx]["characteristics"];
 
+    Map<String, dynamic> desc = Results.mbtiResults[typeIdx]["desc"][0];
+
     return Scaffold(
         body: SafeArea(
       child: Center(
@@ -101,30 +103,41 @@ class _ResultPageState extends State<ResultPage> {
               width: 250,
             ),
             Padding(
-              padding: const EdgeInsets.all(40.0),
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: Results.mbtiResults[typeIdx]["desc"].length,
-                itemBuilder: (context, index) {
-                  print("======== typeIdx = $typeIdx");
-                  print("==== index = $index");
-                  Map<String, dynamic> desc =
-                      Results.mbtiResults[index]["desc"][0];
-                  print(desc["desc1"]);
-                  return ListTile(
-                    subtitle: Column(
-                      children: [
-                        _buildBulletText(desc["desc1"]),
-                        _buildBulletText(desc["desc2"]),
-                        _buildBulletText(desc["desc3"]),
-                        _buildBulletText(desc["desc4"]),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
+                padding: const EdgeInsets.all(40.0),
+                child: ListTile(
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildBulletText(desc["desc1"]),
+                      _buildBulletText(desc["desc2"]),
+                      _buildBulletText(desc["desc3"]),
+                      _buildBulletText(desc["desc4"]),
+                    ],
+                  ),
+                )
+                // child: ListView.builder(
+                //   shrinkWrap: true,
+                //   physics: NeverScrollableScrollPhysics(),
+                //   // itemCount: Results.mbtiResults[typeIdx]["desc"].length,
+                //   itemCount: 1,
+                //   itemBuilder: (context, index) {
+                //
+                //     Map<String, dynamic> desc =
+                //         Results.mbtiResults[typeIdx]["desc"][0];
+
+                //     return ListTile(
+                //       subtitle: Column(
+                //         children: [
+                //           _buildBulletText(desc["desc1"]),
+                //           _buildBulletText(desc["desc2"]),
+                //           _buildBulletText(desc["desc3"]),
+                //           _buildBulletText(desc["desc4"]),
+                //         ],
+                //       ),
+                //     );
+                //   },
+                // ),
+                ),
             AppResultDetail(
               description: description,
               weaknesses: weaknesses
@@ -177,7 +190,10 @@ Widget _buildBulletText(String text) {
     children: [
       Icon(Icons.arrow_right),
       SizedBox(width: 8),
-      Text(text),
+      Text(
+        text,
+        // softWrap: true,
+      ),
     ],
   );
 }
