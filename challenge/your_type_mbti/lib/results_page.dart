@@ -186,17 +186,24 @@ class _ResultPageState extends State<ResultPage> {
 }
 
 Widget _buildBulletText(String text) {
-  return Row(
+  return Column(
     children: [
-      Icon(Icons.arrow_right),
-      SizedBox(width: 8),
-      Flexible(
-        child: Text(
-          text,
-          softWrap: true,
-        ),
+      Row(
+        children: [
+          Icon(Icons.arrow_right),
+          SizedBox(width: 8),
+          Flexible(
+            child: Text(
+              text,
+              softWrap: true,
+            ),
+          ),
+          
+        ],
       ),
-      
+      const SizedBox(
+        height: 7,
+      )
     ],
   );
 }
