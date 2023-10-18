@@ -190,10 +190,13 @@ Widget _buildBulletText(String text) {
     children: [
       Icon(Icons.arrow_right),
       SizedBox(width: 8),
-      Text(
-        text,
-        // softWrap: true,
+      Flexible(
+        child: Text(
+          text,
+          softWrap: true,
+        ),
       ),
+      
     ],
   );
 }
